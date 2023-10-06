@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <title>Busibase</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+    <style>
+      :root {
+        --dark: rgb(6, 10, 14);
+        --dark-grey: rgb(40, 44, 48);
+        --grey: rgb(90, 95, 100);
+        --light-grey: rgb(218, 218, 218);
+        --light: rgb(252, 252, 252);
+        --white: #FFFFFF;
+      }
+
+      html {
+        background: var(--dark);
+      }
+
+      body {
+        background: var(--white)
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      header {
+        background: var(--dark);
+        border-bottom: 1px solid var(--dark-grey);
+        position: sticky;
+        top: 0;
+      }
+
+      header section {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1400px;
+        box-sizing: border-box;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      nav a {
+        color: #FFFFFF;
+        text-decoration: none;
+        padding: 0 20px;
+        line-height: 40px;
+        border-radius: 4px;
+        transition: background-color 200ms linear;
+      }
+
+      nav a:hover {
+        background-color: var(--dark-grey);
+      }
+
+      main section {
+        width: 100%;
+        max-width: 1400px;
+        box-sizing: border-box;
+        padding: 160px 40px;
+        margin: 0 auto;
+      }
+
+      h1, h2, h3 {
+        margin: 0;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 100px;
+        line-height: 90%;
+        letter-spacing: -5px;
+      }
+
+      h2 {
+        font-size: 64px;
+        line-height: 120%;
+        letter-spacing: -1px;
+      }
+
+      h3 {
+        font-size: 22px;
+        line-height: 130%;
+        letter-spacing: -1px;
+      }
+
+      p {
+        line-height: 150%;
+        margin: 0;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        list-style-type: none;
+      }
+
+      #hero {
+        background-image: url('/assets/favicons_grid.png');
+        animation: background-animation 120s linear infinite;
+      }
+
+      @keyframes background-animation {
+        from {
+          background-position: 1920px 1920px;
+        }
+
+        to {
+          background-position: 0 0;
+        }
+      }
+
+      #hero section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 32px;
+        background: radial-gradient(50% 40% at 50% 60%, rgba(252, 252, 252, 0.8) 50%, rgba(252, 252, 252, 0) 100%);
+        text-shadow: 0 0 4px var(--light);
+        height: calc(100vh - 80px);
+      }
+
+      #hero section h1 {
+        max-width: 1100px;
+      }
+
+      #hero p {
+        font-size: 24px;
+        max-width: 700px;
+      }
+
+      button {
+        border: 0;
+        border-radius: 4px;
+        line-height: 40px;
+        padding: 0 20px;
+        font-size: 16px;
+        outline: none;
+        transition: background-color 200ms linear;
+      }
+
+      button:hover {
+        cursor: pointer;
+      }
+
+      button.small {
+        border-radius: 2px;
+        line-height: 32px;
+        padding: 0 16px;
+        font-size: 16px;
+      }
+
+      button.big {
+        border-radius: 8px;
+        line-height: 48px;
+        padding: 0 24px;
+        font-size: 20px;
+      }
+
+      button.black {
+        background: #000000;
+        color: #FFFFFF;
+      }
+
+      button.black:hover {
+        background: var(--dark-grey)
+      }
+
+      button.white {
+        background: #FFFFFF;
+        color: #000000;
+      }
+
+      button.white:hover {
+        background: var(--light-grey);
+      }
+
+      #use-cases h2,
+      #dataset h2 {
+        text-align: center;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      #use-cases .subtitle,
+      #dataset .subtitle {
+        text-align: center;
+        width: 100%;
+        max-width: 750px;
+        margin: 20px auto 0 auto;
+        font-size: 20px;
+      }
+
+      .grid {
+        margin: 64px 0 0 0;
+        display: grid;
+        gap: 64px;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .grid .grid-item h3 {
+        margin: 8px 0;
+      }
+
+      .grid .grid-item svg {
+        width: 24px;
+        height: 24px;
+        padding: 16px;
+        background: rgba(252, 252, 252, 0.1);
+        border: 1px solid rgba(252, 252, 252, 0.1);
+        border-radius: 8px;
+      }
+
+      #pricing h2 {
+        text-align: center;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      #pricing .subtitle {
+        text-align: center;
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto 0 auto;
+      }
+
+      #pricing-plans {
+        margin: 64px 0 0 0;
+        display: flex;
+        gap: 64px;
+        justify-content: center;
+      }
+
+      .pricing-plan {
+        padding: 20px;
+        border: 1px solid #000000;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .pricing-plan-name {
+        font-size: 22px;
+      }
+
+      .pricing-plan-amount b {
+        font-size: 48px;
+        font-weight: 900;
+      }
+
+      .pricing-plan-amount span {
+        color: #999999;
+      }
+
+      .pricing-plan ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px 0 0 0;
+      }
+
+      .pricing-plan ul li {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .pricing-plan ul li svg {
+        width: 22px;
+      }
+
+      .pricing-plan button {
+        margin: 20px 0 0 0;
+        width: 100%;
+      }
+
+      footer {
+        background: #000000;
+      }
+
+      footer section {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1400px;
+        box-sizing: border-box;
+        padding: 80px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      footer .footer-column {
+        width: 33%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <section>
+        <a href="#hero" style="height: 26px;">
+          <svg width="152" height="26" viewBox="0 0 152 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36.0458 19.8198V6.17941H41.7873C42.8182 6.17941 43.6809 6.32372 44.3757 6.61233C45.0748 6.90094 45.5992 7.305 45.9488 7.82451C46.3029 8.34401 46.48 8.94566 46.48 9.62946C46.48 10.149 46.3702 10.613 46.1505 11.0215C45.9309 11.4255 45.6284 11.7608 45.2429 12.0272C44.8575 12.2936 44.4115 12.4801 43.905 12.5866V12.7198C44.4608 12.7465 44.974 12.8952 45.4446 13.1661C45.9197 13.4369 46.3007 13.8144 46.5875 14.2983C46.8744 14.7779 47.0178 15.3462 47.0178 16.0034C47.0178 16.736 46.8296 17.391 46.4531 17.9682C46.0766 18.541 45.532 18.9939 44.8194 19.3269C44.1067 19.6555 43.2417 19.8198 42.2243 19.8198H36.0458ZM39.3737 17.1623H41.431C42.1526 17.1623 42.6837 17.0269 43.0243 16.756C43.3694 16.4851 43.542 16.1077 43.542 15.6237C43.542 15.273 43.4591 14.971 43.2933 14.7179C43.1274 14.4604 42.8921 14.2628 42.5873 14.1252C42.2826 13.9831 41.9173 13.912 41.4915 13.912H39.3737V17.1623ZM39.3737 11.7874H41.2158C41.5789 11.7874 41.9016 11.7275 42.184 11.6076C42.4663 11.4877 42.6859 11.3145 42.8428 11.0881C43.0042 10.8616 43.0848 10.5885 43.0848 10.2688C43.0848 9.81151 42.9212 9.45185 42.5941 9.18988C42.2669 8.9279 41.8254 8.79692 41.2696 8.79692H39.3737V11.7874Z" fill="white"/>
+            <path d="M59.937 6.17941H63.2581V14.9777C63.2581 15.9945 63.0139 16.8803 62.5253 17.6352C62.0368 18.3856 61.3555 18.9672 60.4815 19.3802C59.6075 19.7887 58.5924 19.9929 57.436 19.9929C56.2662 19.9929 55.2443 19.7887 54.3703 19.3802C53.4963 18.9672 52.8173 18.3856 52.3332 17.6352C51.8492 16.8803 51.6071 15.9945 51.6071 14.9777V6.17941H54.935V14.6913C54.935 15.162 55.0381 15.5816 55.2443 15.9501C55.455 16.3186 55.7485 16.6073 56.125 16.8159C56.5015 17.0246 56.9385 17.129 57.436 17.129C57.9335 17.129 58.3683 17.0246 58.7403 16.8159C59.1168 16.6073 59.4103 16.3186 59.621 15.9501C59.8316 15.5816 59.937 15.162 59.937 14.6913V6.17941Z" fill="white"/>
+            <path d="M75.7756 10.2688C75.7308 9.78042 75.5313 9.40079 75.1772 9.12993C74.8276 8.85464 74.3279 8.71699 73.678 8.71699C73.2477 8.71699 72.8892 8.7725 72.6023 8.8835C72.3155 8.99451 72.1003 9.14769 71.9569 9.34306C71.8135 9.53399 71.7395 9.75378 71.7351 10.0024C71.7261 10.2067 71.7664 10.3865 71.8561 10.5419C71.9502 10.6973 72.0847 10.835 72.2595 10.9549C72.4387 11.0703 72.6539 11.1724 72.9049 11.2612C73.1559 11.35 73.4382 11.4277 73.752 11.4943L74.9352 11.7608C75.6165 11.9073 76.2171 12.1027 76.737 12.3469C77.2614 12.5911 77.7006 12.8819 78.0547 13.2194C78.4133 13.5568 78.6844 13.9453 78.8682 14.3849C79.0519 14.8245 79.1461 15.3174 79.1506 15.8635C79.1461 16.7249 78.9265 17.4642 78.4917 18.0814C78.0569 18.6986 77.4317 19.1715 76.616 19.5001C75.8047 19.8286 74.8254 19.9929 73.678 19.9929C72.5261 19.9929 71.5222 19.822 70.6661 19.4801C69.81 19.1382 69.1445 18.6187 68.6694 17.9216C68.1943 17.2244 67.95 16.3431 67.9366 15.2774H71.1233C71.1502 15.717 71.2689 16.0833 71.4796 16.3764C71.6902 16.6694 71.9793 16.8914 72.3469 17.0424C72.7189 17.1934 73.1491 17.2688 73.6377 17.2688C74.0859 17.2688 74.4668 17.2089 74.7806 17.089C75.0988 16.9691 75.3431 16.8026 75.5134 16.5895C75.6837 16.3764 75.7711 16.1322 75.7756 15.8569C75.7711 15.5993 75.6904 15.3795 75.5336 15.1975C75.3767 15.011 75.1347 14.8511 74.8075 14.7179C74.4848 14.5803 74.0724 14.4538 73.5704 14.3383L72.1317 14.0053C70.9395 13.7344 70.0005 13.2971 69.3148 12.6932C68.629 12.0849 68.2884 11.2635 68.2929 10.2289C68.2884 9.38524 68.517 8.64595 68.9786 8.011C69.4403 7.37605 70.079 6.88096 70.8947 6.52575C71.7104 6.17053 72.6404 5.99292 73.6847 5.99292C74.7515 5.99292 75.677 6.17275 76.4613 6.53241C77.2502 6.88762 77.862 7.38715 78.2967 8.03098C78.7315 8.67481 78.9533 9.42077 78.9623 10.2688H75.7756Z" fill="white"/>
+            <path d="M87.1485 6.17941V19.8198H83.8206V6.17941H87.1485Z" fill="white"/>
+            <path d="M92.2269 19.8198V6.17941H97.9684C98.9992 6.17941 99.862 6.32372 100.557 6.61233C101.256 6.90094 101.78 7.305 102.13 7.82451C102.484 8.34401 102.661 8.94566 102.661 9.62946C102.661 10.149 102.551 10.613 102.332 11.0215C102.112 11.4255 101.809 11.7608 101.424 12.0272C101.039 12.2936 100.593 12.4801 100.086 12.5866V12.7198C100.642 12.7465 101.155 12.8952 101.626 13.1661C102.101 13.4369 102.482 13.8144 102.769 14.2983C103.055 14.7779 103.199 15.3462 103.199 16.0034C103.199 16.736 103.011 17.391 102.634 17.9682C102.258 18.541 101.713 18.9939 101 19.3269C100.288 19.6555 99.4228 19.8198 98.4054 19.8198H92.2269ZM95.5548 17.1623H97.612C98.3336 17.1623 98.8648 17.0269 99.2054 16.756C99.5505 16.4851 99.7231 16.1077 99.7231 15.6237C99.7231 15.273 99.6402 14.971 99.4743 14.7179C99.3085 14.4604 99.0732 14.2628 98.7684 14.1252C98.4636 13.9831 98.0983 13.912 97.6726 13.912H95.5548V17.1623ZM95.5548 11.7874H97.3969C97.76 11.7874 98.0827 11.7275 98.365 11.6076C98.6474 11.4877 98.867 11.3145 99.0239 11.0881C99.1852 10.8616 99.2659 10.5885 99.2659 10.2688C99.2659 9.81151 99.1023 9.45185 98.7751 9.18988C98.4479 8.9279 98.0065 8.79692 97.4507 8.79692H95.5548V11.7874Z" fill="white"/>
+            <path d="M110.767 19.8198H107.19L111.835 6.17941H116.266L120.912 19.8198H117.335L114.101 9.61614H113.994L110.767 19.8198ZM110.289 14.4515H117.765V16.9558H110.289V14.4515Z" fill="white"/>
+            <path d="M132.4 10.2688C132.356 9.78042 132.156 9.40079 131.802 9.12993C131.452 8.85464 130.953 8.71699 130.303 8.71699C129.873 8.71699 129.514 8.7725 129.227 8.8835C128.94 8.99451 128.725 9.14769 128.582 9.34306C128.438 9.53399 128.364 9.75378 128.36 10.0024C128.351 10.2067 128.391 10.3865 128.481 10.5419C128.575 10.6973 128.709 10.835 128.884 10.9549C129.064 11.0703 129.279 11.1724 129.53 11.2612C129.781 11.35 130.063 11.4277 130.377 11.4943L131.56 11.7608C132.241 11.9073 132.842 12.1027 133.362 12.3469C133.886 12.5911 134.325 12.8819 134.679 13.2194C135.038 13.5568 135.309 13.9453 135.493 14.3849C135.677 14.8245 135.771 15.3174 135.775 15.8635C135.771 16.7249 135.551 17.4642 135.116 18.0814C134.682 18.6986 134.056 19.1715 133.241 19.5001C132.43 19.8286 131.45 19.9929 130.303 19.9929C129.151 19.9929 128.147 19.822 127.291 19.4801C126.435 19.1382 125.769 18.6187 125.294 17.9216C124.819 17.2244 124.575 16.3431 124.561 15.2774H127.748C127.775 15.717 127.894 16.0833 128.104 16.3764C128.315 16.6694 128.604 16.8914 128.972 17.0424C129.344 17.1934 129.774 17.2688 130.262 17.2688C130.711 17.2688 131.092 17.2089 131.405 17.089C131.724 16.9691 131.968 16.8026 132.138 16.5895C132.309 16.3764 132.396 16.1322 132.4 15.8569C132.396 15.5993 132.315 15.3795 132.158 15.1975C132.001 15.011 131.759 14.8511 131.432 14.7179C131.11 14.5803 130.697 14.4538 130.195 14.3383L128.757 14.0053C127.564 13.7344 126.625 13.2971 125.94 12.6932C125.254 12.0849 124.913 11.2635 124.918 10.2289C124.913 9.38524 125.142 8.64595 125.603 8.011C126.065 7.37605 126.704 6.88096 127.519 6.52575C128.335 6.17053 129.265 5.99292 130.31 5.99292C131.376 5.99292 132.302 6.17275 133.086 6.53241C133.875 6.88762 134.487 7.38715 134.922 8.03098C135.356 8.67481 135.578 9.42077 135.587 10.2688H132.4Z" fill="white"/>
+            <path d="M140.445 19.8198V6.17941H150.046V8.85686H143.773V11.6542H149.555V14.3383H143.773V17.1423H150.046V19.8198H140.445Z" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.9631 7.59488L13 12.2382L22.0369 7.59488L13 2.95153L3.9631 7.59488ZM23.2487 10.2974L26 8.88379L26 6.30597L13.7273 0H12.2727L4.26714e-07 6.30597L3.04796e-07 8.88379L2.75125 10.2974L1.82877e-07 11.7111L0 14.2889L2.75125 15.7026L4.26714e-07 17.1162L4.87673e-07 19.694L12.2727 26H13.7273L26 19.694L26 17.1162L23.2487 15.7026L26 14.2889V11.7111L23.2487 10.2974ZM20.0129 11.9601L13.7273 15.1898L12.2727 15.1898L5.98703 11.9601L3.9631 13L13 17.6434L22.0369 13L20.0129 11.9601ZM20.0129 17.3652L13.7273 20.5949L12.2727 20.5949L5.98703 17.3652L3.9631 18.4051L13 23.0485L22.0369 18.4051L20.0129 17.3652Z" fill="white"/>
+          </svg>
+        </a>
+        <nav>
+          <a href="#use-cases">Use cases</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#dataset">Dataset</a>
+          <a href="#pricing">Pricing</a>
+        </nav>
+        <button class="white">Log in</button>
+      </section>
+    </header>
+
+    <main>
+      <div id="hero">
+        <section>
+          <h1>Unlock insights from millions of companies</h1>
+          <p>
+            Extract actionable insights about companies you’re interested in with instant access to millions of company profiles.
+          </p>
+          <button class="black big">
+            Try for free
+          </button>
+        </section>
+      </div>
+      <div id="use-cases" style="background: var(--dark); color: #FFFFFF">
+        <section>
+          <h2>Limitless use cases</h2>
+          <p class="subtitle">
+            Extract actionable insights about companies you’re interested in with instant access to millions of company profiles.
+            With this API, you can get relevant data.
+          </p>
+          <div class="grid">
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+              </svg>
+              <h3>Lead generation</h3>
+              <p>
+                Generate wide leads lists of detailed data for high-quality outreach and improve your conversion rates.
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+              </svg>
+              <h3>Targeting & segmentation</h3>
+              <p>
+                Optimize marketing and sales efforts by refining audience segmentation and campaigns targeting thanks to accurate data.
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h5.25m5.25-.75L17.25 9m0 0L21 12.75M17.25 9v12" />
+              </svg>
+              <h3>
+                Scoring & prioritization
+              </h3>
+              <p>
+                Data-driven lead scoring allows marketing and sales teams to prioritize accounts by ensuring efforts are focused on high-potential accounts.
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
+              </svg>
+              <h3>
+                Personalization
+              </h3>
+              <p>
+                Tailor marketing messages, customer support responses, and sales outreach to increase customer engagement and conversions.
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
+              </svg>
+              <h3>
+                Onboarding
+              </h3>
+              <p>
+                Deliver an onboarding experience tailored to the unique needs of new customers by leveraging insights into their industry, company size, and specific requirements.
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+              </svg>
+              <h3>
+                Compliance and Security
+              </h3>
+              <p>
+                In B2B environments, data enrichment is crucial for ensuring compliance with industry regulations and maintaining data security standards.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section id="solutions">
+        <h2>Solutions</h2>
+      </section>
+
+      <div id="dataset" style="background: #F5F5F5;">
+        <section>
+          <h2>Dataset title</h2>
+          <p class="subtitle">
+            Extract actionable insights about companies you’re interested in with instant access to millions of company profiles.
+            With this API, you can get relevant data.
+          </p>
+          <div class="grid">
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+              </svg>
+              <h3>
+                +12 million companies
+              </h3>
+              <p>
+                Access a large database of more than 12 million companies and growing daily.
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.411-2.353a2.25 2.25 0 00.286-.76m11.928 9.869A9 9 0 008.965 3.525m11.928 9.868A9 9 0 118.965 3.525" />
+              </svg>
+              <h3>
+                Distributed in 180 countries
+              </h3>
+              <p>
+                From America to Asia, via Europe, access companies data all over the world.
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+              </svg>
+              <h3>
+                Grouped in +165 industries
+              </h3>
+              <p>
+                A wide range of companies across all sectors, associated with NAICS and SIC classification system codes.
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+              </svg>
+              <h3>
+                All sizes
+              </h3>
+              <p>
+                Access the data you want, from early stage startups to Fortune Global 500 companies.
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5" />
+              </svg>
+              <h3>
+                +30 data attributes
+              </h3>
+              <p>
+                Industry, size, year founded, social network accounts, domain name, market cap, CIK, EIN, LEI, SIREN, ...
+              </p>
+            </div>
+            <div class="grid-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+              <h3>
+                Continually updated
+              </h3>
+              <p>
+                A constantly evolving dataset, every second dozens of company data are added, updated or refined.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section id="pricing">
+        <h2>Pricing plans</h2>
+        <p class="subtitle">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <div id="pricing-plans">
+
+          <div class="pricing-plan">
+            <div class="pricing-plan-name">
+              Free
+            </div>
+            <div class="pricing-plan-amount">
+              <b>$0</b>
+              <span>/ month</span>
+            </div>
+            <ul>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Access data from +12M companies</li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Access +50 data points
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                100 requests / month
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                1 request / second
+              </li>
+            </ul>
+            <button class="black">
+              Get started
+            </button>
+          </div>
+
+          <div class="pricing-plan">
+            <div class="pricing-plan-name">
+              Basic
+            </div>
+            <div class="pricing-plan-amount">
+              <b>$10</b>
+              <span>/ month</span>
+            </div>
+            <ul>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Access data from +12M companies</li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Access +50 data points
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                5 000 requests / month
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                5 requests / second
+              </li>
+            </ul>
+            <button class="black">
+              Get started
+            </button>
+          </div>
+
+          <div class="pricing-plan">
+            <div class="pricing-plan-name">
+              Pro
+            </div>
+            <div class="pricing-plan-amount">
+              <b>$20</b>
+              <span>/ month</span>
+            </div>
+            <ul>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Access data from +12M companies</li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Access +50 data points
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                10 000 requests / month
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="green">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                10 requests / second
+              </li>
+            </ul>
+            <button class="black">
+              Get started
+            </button>
+          </div>
+
+        </div>
+      </section>
+    </main>
+    <footer>
+      <section>
+        <div class="footer-column">
+          <svg width="152" height="26" viewBox="0 0 152 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36.0458 19.8198V6.17941H41.7873C42.8182 6.17941 43.6809 6.32372 44.3757 6.61233C45.0748 6.90094 45.5992 7.305 45.9488 7.82451C46.3029 8.34401 46.48 8.94566 46.48 9.62946C46.48 10.149 46.3702 10.613 46.1505 11.0215C45.9309 11.4255 45.6284 11.7608 45.2429 12.0272C44.8575 12.2936 44.4115 12.4801 43.905 12.5866V12.7198C44.4608 12.7465 44.974 12.8952 45.4446 13.1661C45.9197 13.4369 46.3007 13.8144 46.5875 14.2983C46.8744 14.7779 47.0178 15.3462 47.0178 16.0034C47.0178 16.736 46.8296 17.391 46.4531 17.9682C46.0766 18.541 45.532 18.9939 44.8194 19.3269C44.1067 19.6555 43.2417 19.8198 42.2243 19.8198H36.0458ZM39.3737 17.1623H41.431C42.1526 17.1623 42.6837 17.0269 43.0243 16.756C43.3694 16.4851 43.542 16.1077 43.542 15.6237C43.542 15.273 43.4591 14.971 43.2933 14.7179C43.1274 14.4604 42.8921 14.2628 42.5873 14.1252C42.2826 13.9831 41.9173 13.912 41.4915 13.912H39.3737V17.1623ZM39.3737 11.7874H41.2158C41.5789 11.7874 41.9016 11.7275 42.184 11.6076C42.4663 11.4877 42.6859 11.3145 42.8428 11.0881C43.0042 10.8616 43.0848 10.5885 43.0848 10.2688C43.0848 9.81151 42.9212 9.45185 42.5941 9.18988C42.2669 8.9279 41.8254 8.79692 41.2696 8.79692H39.3737V11.7874Z" fill="white"/>
+            <path d="M59.937 6.17941H63.2581V14.9777C63.2581 15.9945 63.0139 16.8803 62.5253 17.6352C62.0368 18.3856 61.3555 18.9672 60.4815 19.3802C59.6075 19.7887 58.5924 19.9929 57.436 19.9929C56.2662 19.9929 55.2443 19.7887 54.3703 19.3802C53.4963 18.9672 52.8173 18.3856 52.3332 17.6352C51.8492 16.8803 51.6071 15.9945 51.6071 14.9777V6.17941H54.935V14.6913C54.935 15.162 55.0381 15.5816 55.2443 15.9501C55.455 16.3186 55.7485 16.6073 56.125 16.8159C56.5015 17.0246 56.9385 17.129 57.436 17.129C57.9335 17.129 58.3683 17.0246 58.7403 16.8159C59.1168 16.6073 59.4103 16.3186 59.621 15.9501C59.8316 15.5816 59.937 15.162 59.937 14.6913V6.17941Z" fill="white"/>
+            <path d="M75.7756 10.2688C75.7308 9.78042 75.5313 9.40079 75.1772 9.12993C74.8276 8.85464 74.3279 8.71699 73.678 8.71699C73.2477 8.71699 72.8892 8.7725 72.6023 8.8835C72.3155 8.99451 72.1003 9.14769 71.9569 9.34306C71.8135 9.53399 71.7395 9.75378 71.7351 10.0024C71.7261 10.2067 71.7664 10.3865 71.8561 10.5419C71.9502 10.6973 72.0847 10.835 72.2595 10.9549C72.4387 11.0703 72.6539 11.1724 72.9049 11.2612C73.1559 11.35 73.4382 11.4277 73.752 11.4943L74.9352 11.7608C75.6165 11.9073 76.2171 12.1027 76.737 12.3469C77.2614 12.5911 77.7006 12.8819 78.0547 13.2194C78.4133 13.5568 78.6844 13.9453 78.8682 14.3849C79.0519 14.8245 79.1461 15.3174 79.1506 15.8635C79.1461 16.7249 78.9265 17.4642 78.4917 18.0814C78.0569 18.6986 77.4317 19.1715 76.616 19.5001C75.8047 19.8286 74.8254 19.9929 73.678 19.9929C72.5261 19.9929 71.5222 19.822 70.6661 19.4801C69.81 19.1382 69.1445 18.6187 68.6694 17.9216C68.1943 17.2244 67.95 16.3431 67.9366 15.2774H71.1233C71.1502 15.717 71.2689 16.0833 71.4796 16.3764C71.6902 16.6694 71.9793 16.8914 72.3469 17.0424C72.7189 17.1934 73.1491 17.2688 73.6377 17.2688C74.0859 17.2688 74.4668 17.2089 74.7806 17.089C75.0988 16.9691 75.3431 16.8026 75.5134 16.5895C75.6837 16.3764 75.7711 16.1322 75.7756 15.8569C75.7711 15.5993 75.6904 15.3795 75.5336 15.1975C75.3767 15.011 75.1347 14.8511 74.8075 14.7179C74.4848 14.5803 74.0724 14.4538 73.5704 14.3383L72.1317 14.0053C70.9395 13.7344 70.0005 13.2971 69.3148 12.6932C68.629 12.0849 68.2884 11.2635 68.2929 10.2289C68.2884 9.38524 68.517 8.64595 68.9786 8.011C69.4403 7.37605 70.079 6.88096 70.8947 6.52575C71.7104 6.17053 72.6404 5.99292 73.6847 5.99292C74.7515 5.99292 75.677 6.17275 76.4613 6.53241C77.2502 6.88762 77.862 7.38715 78.2967 8.03098C78.7315 8.67481 78.9533 9.42077 78.9623 10.2688H75.7756Z" fill="white"/>
+            <path d="M87.1485 6.17941V19.8198H83.8206V6.17941H87.1485Z" fill="white"/>
+            <path d="M92.2269 19.8198V6.17941H97.9684C98.9992 6.17941 99.862 6.32372 100.557 6.61233C101.256 6.90094 101.78 7.305 102.13 7.82451C102.484 8.34401 102.661 8.94566 102.661 9.62946C102.661 10.149 102.551 10.613 102.332 11.0215C102.112 11.4255 101.809 11.7608 101.424 12.0272C101.039 12.2936 100.593 12.4801 100.086 12.5866V12.7198C100.642 12.7465 101.155 12.8952 101.626 13.1661C102.101 13.4369 102.482 13.8144 102.769 14.2983C103.055 14.7779 103.199 15.3462 103.199 16.0034C103.199 16.736 103.011 17.391 102.634 17.9682C102.258 18.541 101.713 18.9939 101 19.3269C100.288 19.6555 99.4228 19.8198 98.4054 19.8198H92.2269ZM95.5548 17.1623H97.612C98.3336 17.1623 98.8648 17.0269 99.2054 16.756C99.5505 16.4851 99.7231 16.1077 99.7231 15.6237C99.7231 15.273 99.6402 14.971 99.4743 14.7179C99.3085 14.4604 99.0732 14.2628 98.7684 14.1252C98.4636 13.9831 98.0983 13.912 97.6726 13.912H95.5548V17.1623ZM95.5548 11.7874H97.3969C97.76 11.7874 98.0827 11.7275 98.365 11.6076C98.6474 11.4877 98.867 11.3145 99.0239 11.0881C99.1852 10.8616 99.2659 10.5885 99.2659 10.2688C99.2659 9.81151 99.1023 9.45185 98.7751 9.18988C98.4479 8.9279 98.0065 8.79692 97.4507 8.79692H95.5548V11.7874Z" fill="white"/>
+            <path d="M110.767 19.8198H107.19L111.835 6.17941H116.266L120.912 19.8198H117.335L114.101 9.61614H113.994L110.767 19.8198ZM110.289 14.4515H117.765V16.9558H110.289V14.4515Z" fill="white"/>
+            <path d="M132.4 10.2688C132.356 9.78042 132.156 9.40079 131.802 9.12993C131.452 8.85464 130.953 8.71699 130.303 8.71699C129.873 8.71699 129.514 8.7725 129.227 8.8835C128.94 8.99451 128.725 9.14769 128.582 9.34306C128.438 9.53399 128.364 9.75378 128.36 10.0024C128.351 10.2067 128.391 10.3865 128.481 10.5419C128.575 10.6973 128.709 10.835 128.884 10.9549C129.064 11.0703 129.279 11.1724 129.53 11.2612C129.781 11.35 130.063 11.4277 130.377 11.4943L131.56 11.7608C132.241 11.9073 132.842 12.1027 133.362 12.3469C133.886 12.5911 134.325 12.8819 134.679 13.2194C135.038 13.5568 135.309 13.9453 135.493 14.3849C135.677 14.8245 135.771 15.3174 135.775 15.8635C135.771 16.7249 135.551 17.4642 135.116 18.0814C134.682 18.6986 134.056 19.1715 133.241 19.5001C132.43 19.8286 131.45 19.9929 130.303 19.9929C129.151 19.9929 128.147 19.822 127.291 19.4801C126.435 19.1382 125.769 18.6187 125.294 17.9216C124.819 17.2244 124.575 16.3431 124.561 15.2774H127.748C127.775 15.717 127.894 16.0833 128.104 16.3764C128.315 16.6694 128.604 16.8914 128.972 17.0424C129.344 17.1934 129.774 17.2688 130.262 17.2688C130.711 17.2688 131.092 17.2089 131.405 17.089C131.724 16.9691 131.968 16.8026 132.138 16.5895C132.309 16.3764 132.396 16.1322 132.4 15.8569C132.396 15.5993 132.315 15.3795 132.158 15.1975C132.001 15.011 131.759 14.8511 131.432 14.7179C131.11 14.5803 130.697 14.4538 130.195 14.3383L128.757 14.0053C127.564 13.7344 126.625 13.2971 125.94 12.6932C125.254 12.0849 124.913 11.2635 124.918 10.2289C124.913 9.38524 125.142 8.64595 125.603 8.011C126.065 7.37605 126.704 6.88096 127.519 6.52575C128.335 6.17053 129.265 5.99292 130.31 5.99292C131.376 5.99292 132.302 6.17275 133.086 6.53241C133.875 6.88762 134.487 7.38715 134.922 8.03098C135.356 8.67481 135.578 9.42077 135.587 10.2688H132.4Z" fill="white"/>
+            <path d="M140.445 19.8198V6.17941H150.046V8.85686H143.773V11.6542H149.555V14.3383H143.773V17.1423H150.046V19.8198H140.445Z" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.9631 7.59488L13 12.2382L22.0369 7.59488L13 2.95153L3.9631 7.59488ZM23.2487 10.2974L26 8.88379L26 6.30597L13.7273 0H12.2727L4.26714e-07 6.30597L3.04796e-07 8.88379L2.75125 10.2974L1.82877e-07 11.7111L0 14.2889L2.75125 15.7026L4.26714e-07 17.1162L4.87673e-07 19.694L12.2727 26H13.7273L26 19.694L26 17.1162L23.2487 15.7026L26 14.2889V11.7111L23.2487 10.2974ZM20.0129 11.9601L13.7273 15.1898L12.2727 15.1898L5.98703 11.9601L3.9631 13L13 17.6434L22.0369 13L20.0129 11.9601ZM20.0129 17.3652L13.7273 20.5949L12.2727 20.5949L5.98703 17.3652L3.9631 18.4051L13 23.0485L22.0369 18.4051L20.0129 17.3652Z" fill="white"/>
+          </svg>
+        </div>
+        <div class="footer-column"></div>
+        <div class="footer-column"></div>
+      </section>
+    </footer>
+  </body>
+</html>
